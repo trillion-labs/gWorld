@@ -1,0 +1,16 @@
+# Core ML dependencies
+torch>=2.0.0
+numpy>=1.24.0
+transformers>=4.40.0
+
+# vLLM for efficient inference
+vllm>=0.4.0
+
+# Image processing
+Pillow>=10.0.0
+
+# HTML rendering
+playwright>=1.40.0
+
+# Progress bars
+tqdm>=4.65.0
