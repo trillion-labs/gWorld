@@ -2,7 +2,7 @@
 """
 World Model Evaluation Script - Android World
 
-Evaluates MWM models by predicting S_t+1 from S_t and A_t using
+Evaluates gWorld/MWM models by predicting S_t+1 from S_t and A_t using
 state transitions extracted from deduplicated Android World pickle files.
 
 Training format:
@@ -654,79 +654,37 @@ def main():
     # =========================================================================
 
     # Model configurations
-    MODEL_BASE_PATH = "/home/work/.shared/sungjun/Qwen3-VL/qwen-vl-finetune/outputs/MWM-v12-32b"
-
     MODELS = [
         # =====================================================================
-        # MWM-32b: Full fine-tuned 32B model with reasoning
+        # gWorld-8B
         # =====================================================================
         {
-            "name": f"{MODEL_BASE_PATH}/checkpoint-18790",
-            "display_name": "MWM-32B-ckpt18790",
-            "base_model": "Qwen/Qwen3-VL-32B-Instruct",
+            "name": "trillionlabs/gWorld-8B",
+            "display_name": "gWorld-8B",
+            "base_model": "trillionlabs/gWorld-8B",
             "tensor_parallel_size": 8,
             "gpu_memory_utilization": 0.9,
             "max_model_len": 19384,
         },
+        # =====================================================================
+        # gWorld-32B
+        # =====================================================================
         {
-            "name": f"{MODEL_BASE_PATH}/checkpoint-15032",
-            "display_name": "MWM-32B-ckpt15032",
-            "base_model": "Qwen/Qwen3-VL-32B-Instruct",
+            "name": "trillionlabs/gWorld-32B",
+            "display_name": "gWorld-32B",
+            "base_model": "trillionlabs/gWorld-32B",
             "tensor_parallel_size": 8,
             "gpu_memory_utilization": 0.9,
             "max_model_len": 19384,
         },
-        {
-            "name": f"{MODEL_BASE_PATH}/checkpoint-11274",
-            "display_name": "MWM-32B-ckpt11274",
-            "base_model": "Qwen/Qwen3-VL-32B-Instruct",
-            "tensor_parallel_size": 8,
-            "gpu_memory_utilization": 0.9,
-            "max_model_len": 19384,
-        },
-        {
-            "name": f"{MODEL_BASE_PATH}/checkpoint-7516",
-            "display_name": "MWM-32B-ckpt7516",
-            "base_model": "Qwen/Qwen3-VL-32B-Instruct",
-            "tensor_parallel_size": 8,
-            "gpu_memory_utilization": 0.9,
-            "max_model_len": 19384,
-        },
-        {
-            "name": f"{MODEL_BASE_PATH}/checkpoint-3758",
-            "display_name": "MWM-32B-ckpt3758",
-            "base_model": "Qwen/Qwen3-VL-32B-Instruct",
-            "tensor_parallel_size": 8,
-            "gpu_memory_utilization": 0.9,
-            "max_model_len": 19384,
-        },
-        # # =====================================================================
-        # # Baselines (uncomment as needed)
-        # # =====================================================================
-        # {
-        #     "name": "Qwen/Qwen3-VL-32B-Instruct",
-        #     "display_name": "Qwen3-VL-32B-baseline",
-        #     "base_model": "Qwen/Qwen3-VL-32B-Instruct",
-        #     "is_lora": False,
-        #     "tensor_parallel_size": 8,
-        #     "gpu_memory_utilization": 0.9,
-        #     "max_model_len": 19384,
-        # },
-        # {
-        #     "name": "Qwen/Qwen3-VL-235B-A22B-Instruct",
-        #     "display_name": "Qwen3-VL-235B-A22B-baseline",
-        #     "base_model": "Qwen/Qwen3-VL-235B-A22B-Instruct",
-        #     "tensor_parallel_size": 8,
-        #     "gpu_memory_utilization": 0.9,
-        #     "max_model_len": 19384,
-        # },
     ]
 
     # GPU configuration
     CUDA_VISIBLE_DEVICES = "0,1,2,3,4,5,6,7"
 
     # Input/Output directories
-    TREE_DIR = "/home/work/.shared/segyu/mwm/eval_wm/Tree_dedup"
+    # TREE_DIR = "/home/work/.shared/segyu/mwm/eval_wm/Tree_dedup" # This was our local path
+    TREE_DIR = "[Insert the path to MWMBench-AndroidWorld]"
     OUTPUT_BASE_DIR = "eval_outputs"
 
     # Shared ground truth and inputs (reused across all pickle evaluations)
@@ -939,11 +897,12 @@ def main():
         }
 
         # Override custom architecture for fine-tuned Qwen models
-        if "Qwen" in base_model and not is_baseline:
-            llm_kwargs["hf_overrides"] = {"architectures": ["Qwen3VLForConditionalGeneration"]}
+        if ("Qwen" in base_model or "gWorld" in model_name) and not is_baseline:
+            if "Qwen3" in base_model:
+                llm_kwargs["hf_overrides"] = {"architectures": ["Qwen3VLForConditionalGeneration"]}
 
         # Add mm_processor_kwargs only for Qwen models (Llama 4 has different image processing)
-        if "Qwen" in base_model:
+        if "Qwen" in base_model or "gWorld" in model_name:
             llm_kwargs["mm_processor_kwargs"] = MM_PROCESSOR_KWARGS
 
         # Add limit_mm_per_prompt if specified (needed for Llama 4)

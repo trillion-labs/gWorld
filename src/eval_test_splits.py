@@ -2,7 +2,7 @@
 """
 World Model Evaluation Script - Test Splits
 
-Evaluates world model on the test split from the training data.
+Evaluates gWorld/MWM models on the test split from the training data.
 
 Training format:
 - Prompt includes reasoning instruction before HTML generation
@@ -568,51 +568,29 @@ def main():
     # =========================================================================
 
     # Test data
-    TEST_JSONL_PATH = Path("/home/work/.shared/sungjun/MWM/outputs_openrouter/training_v12_test_2000.jsonl")
+    # TEST_JSONL_PATH = Path("/home/work/.shared/sungjun/MWM/outputs_openrouter/training_v12_test_2000.jsonl") # This was our local path
+    TEST_JSONL_PATH = Path("[Insert the path to MWMBench-TestSplits]")
 
     # Model configurations
-    MODEL_BASE_PATH = "/home/work/.shared/sungjun/Qwen3-VL/qwen-vl-finetune/outputs/MWM-v12-8b"
-
     MODELS = [
         # =====================================================================
-        # MWM-8b: Full fine-tuned 8B model with reasoning
+        # gWorld-8B
         # =====================================================================
         {
-            "name": f"{MODEL_BASE_PATH}/checkpoint-18790",
-            "display_name": "MWM-8B-ckpt18790",
-            "base_model": "Qwen/Qwen3-VL-8B-Instruct",
+            "name": "trillionlabs/gWorld-8B",
+            "display_name": "gWorld-8B",
+            "base_model": "trillionlabs/gWorld-8B",
             "tensor_parallel_size": 8,
             "gpu_memory_utilization": 0.9,
             "max_model_len": 19384,
         },
+        # =====================================================================
+        # gWorld-32B
+        # =====================================================================
         {
-            "name": f"{MODEL_BASE_PATH}/checkpoint-15032",
-            "display_name": "MWM-8B-ckpt15032",
-            "base_model": "Qwen/Qwen3-VL-8B-Instruct",
-            "tensor_parallel_size": 8,
-            "gpu_memory_utilization": 0.9,
-            "max_model_len": 19384,
-        },
-        {
-            "name": f"{MODEL_BASE_PATH}/checkpoint-11274",
-            "display_name": "MWM-8B-ckpt11274",
-            "base_model": "Qwen/Qwen3-VL-8B-Instruct",
-            "tensor_parallel_size": 8,
-            "gpu_memory_utilization": 0.9,
-            "max_model_len": 19384,
-        },
-        {
-            "name": f"{MODEL_BASE_PATH}/checkpoint-7516",
-            "display_name": "MWM-8B-ckpt7516",
-            "base_model": "Qwen/Qwen3-VL-8B-Instruct",
-            "tensor_parallel_size": 8,
-            "gpu_memory_utilization": 0.9,
-            "max_model_len": 19384,
-        },
-        {
-            "name": f"{MODEL_BASE_PATH}/checkpoint-3758",
-            "display_name": "MWM-8B-ckpt3758",
-            "base_model": "Qwen/Qwen3-VL-8B-Instruct",
+            "name": "trillionlabs/gWorld-32B",
+            "display_name": "gWorld-32B",
+            "base_model": "trillionlabs/gWorld-32B",
             "tensor_parallel_size": 8,
             "gpu_memory_utilization": 0.9,
             "max_model_len": 19384,
@@ -799,11 +777,13 @@ def main():
         }
 
         # Override custom architecture for fine-tuned Qwen models
-        if "Qwen" in base_model and not is_baseline:
-            llm_kwargs["hf_overrides"] = {"architectures": ["Qwen3VLForConditionalGeneration"]}
+        if ("Qwen" in base_model or "gWorld" in model_name) and not is_baseline:
+            # Only apply if the model actually needs this specific class mapping
+            if "Qwen3" in base_model:
+                llm_kwargs["hf_overrides"] = {"architectures": ["Qwen3VLForConditionalGeneration"]}
 
-        # Add mm_processor_kwargs only for Qwen models (Llama 4 has different image processing)
-        if "Qwen" in base_model:
+        # Add mm_processor_kwargs only for Qwen/gWorld models
+        if "Qwen" in base_model or "gWorld" in model_name:
             llm_kwargs["mm_processor_kwargs"] = MM_PROCESSOR_KWARGS
 
         # Add limit_mm_per_prompt if specified (needed for Llama 4)
