@@ -290,7 +290,7 @@ coming soon
 
 ## Resources
 
-- [Paper](https://arxiv.org/abs/XXXX.XXXXX) <!-- TODO: Update with actual arXiv link -->
+- [Paper](https://arxiv.org/abs/2602.01576) <!-- TODO: Update with actual arXiv link -->
 - [gWorld-8B on Hugging Face](https://huggingface.co/trillionlabs/gWorld-8B)
 - [gWorld-32B on Hugging Face](https://huggingface.co/trillionlabs/gWorld-32B)
 - [GitHub Repository](https://github.com/trillion-labs/gWorld)
