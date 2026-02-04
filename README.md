@@ -6,6 +6,11 @@ gWorld is the first open-weight, single self-contained Vision-Language Model (VL
 
 ![gWorld Overview](figure1.png)
 
+- [Project Site and Demo](https://trillionlabs-gworld.github.io/) 
+- [Paper](https://arxiv.org/abs/2602.01576) 
+- [gWorld-8B on Hugging Face](https://huggingface.co/trillionlabs/gWorld-8B)
+- [gWorld-32B on Hugging Face](https://huggingface.co/trillionlabs/gWorld-32B)
+
 ## Key Features
 
 - **Action-conditioned next-state prediction** for mobile GUIs
@@ -295,14 +300,6 @@ python src/eval_test_splits.py
       url={https://arxiv.org/abs/2602.01576},
 }
 ```
-
-## Resources
-
-- [Project Site and Demo]([https://arxiv.org/abs/2602.01576](https://trillionlabs-gworld.github.io/)) 
-- [Paper](https://arxiv.org/abs/2602.01576) 
-- [gWorld-8B on Hugging Face](https://huggingface.co/trillionlabs/gWorld-8B)
-- [gWorld-32B on Hugging Face](https://huggingface.co/trillionlabs/gWorld-32B)
-- [GitHub Repository](https://github.com/trillion-labs/gWorld)
 
 ## License
 
