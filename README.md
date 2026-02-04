@@ -298,7 +298,8 @@ python src/eval_test_splits.py
 
 ## Resources
 
-- [Paper](https://arxiv.org/abs/2602.01576) <!-- TODO: Update with actual arXiv link -->
+- [Project Site and Demo]([https://arxiv.org/abs/2602.01576](https://trillionlabs-gworld.github.io/)) 
+- [Paper](https://arxiv.org/abs/2602.01576) 
 - [gWorld-8B on Hugging Face](https://huggingface.co/trillionlabs/gWorld-8B)
 - [gWorld-32B on Hugging Face](https://huggingface.co/trillionlabs/gWorld-32B)
 - [GitHub Repository](https://github.com/trillion-labs/gWorld)
