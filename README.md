@@ -285,7 +285,15 @@ python src/eval_test_splits.py
 ## Citation
 
 ```bibtex
-coming soon
+@misc{koh2026generativevisualcodemobile,
+      title={Generative Visual Code Mobile World Models},
+      author={Woosung Koh and Sungjun Han and Segyu Lee and Se-Young Yun and Jamin Shin},
+      year={2026},
+      eprint={2602.01576},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2602.01576},
+}
 ```
 
 ## Resources
