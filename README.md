@@ -1,10 +1,10 @@
-# GuiWorld (gWorld)
+# gWorld
 
-🎉 **News (May, 2026):** GuiWorld has been **accepted to ICML 2026**! See you in Seoul. 🇰🇷
+🎉 **News (May, 2026):** gWorld has been **accepted to ICML 2026**! See you in Seoul. 🇰🇷
 
 **Generative Visual Code Mobile World Model**
 
-GuiWorld (gWorld) is the first open-weight, single self-contained Vision-Language Model (VLM) specialized for visual mobile GUI world modeling. It predicts the next GUI state as executable web code rather than generating pixels directly. Available in two sizes: **gWorld-8B** and **gWorld-32B**.
+gWorld (GuiWorld) is the first open-weight, single self-contained Vision-Language Model (VLM) specialized for visual mobile GUI world modeling. It predicts the next GUI state as executable web code rather than generating pixels directly. Available in two sizes: **gWorld-8B** and **gWorld-32B**.
 
 ![gWorld Overview](figure1.png)
 
