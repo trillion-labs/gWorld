@@ -1,17 +1,19 @@
-# gWorld
+# gWorld: Mobile GUI World Model via Renderable Code Generation (ICML 2026)
+
+**gWorld** (GuiWorld) is an open-weight **GUI world model** for **mobile GUI agents**: a single
+vision-language model (8B / 32B) that predicts the **next screen** after a user action by
+generating **renderable HTML/web code** instead of pixels. First released Feb 2, 2026 · ICML 2026.
+
+[Paper](https://arxiv.org/abs/2602.01576) · [Project page](https://trillionlabs-gworld.github.io/) ·
+[gWorld-8B](https://huggingface.co/trillionlabs/gWorld-8B) · [gWorld-32B](https://huggingface.co/trillionlabs/gWorld-32B) ·
+[MWMBench](https://huggingface.co/datasets/trillionlabs/MWMBench)
+
+**Use cases:** simulate actions before execution for GUI agents · test-time lookahead/planning ·
+synthetic rollouts for RL training of mobile agents · next-UI prediction benchmarking.
 
 🎉 **News (May, 2026):** gWorld has been **accepted to ICML 2026**! See you in Seoul. 🇰🇷
 
-**Generative Visual Code Mobile World Model**
-
-gWorld (GuiWorld) is the first open-weight, single self-contained Vision-Language Model (VLM) specialized for visual mobile GUI world modeling. It predicts the next GUI state as executable web code rather than generating pixels directly. Available in two sizes: **gWorld-8B** and **gWorld-32B**.
-
 ![gWorld Overview](figure1.png)
-
-- [Project Site and Demo](https://trillionlabs-gworld.github.io/) 
-- [Paper](https://arxiv.org/abs/2602.01576) 
-- [gWorld-8B on Hugging Face](https://huggingface.co/trillionlabs/gWorld-8B)
-- [gWorld-32B on Hugging Face](https://huggingface.co/trillionlabs/gWorld-32B)
 
 ## Key Features
 
@@ -291,15 +293,15 @@ python src/eval_test_splits.py
 
 ## Citation
 
+Paper: **Generative Visual Code Mobile World Models** (ICML 2026)
+
 ```bibtex
-@misc{koh2026generativevisualcodemobile,
-      title={Generative Visual Code Mobile World Models},
-      author={Woosung Koh and Sungjun Han and Segyu Lee and Se-Young Yun and Jamin Shin},
-      year={2026},
-      eprint={2602.01576},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2602.01576},
+@inproceedings{koh2026gworld,
+  title     = {Generative Visual Code Mobile World Models},
+  author    = {Koh, Woosung and Han, Sungjun and Lee, Segyu and Yun, Se-Young and Shin, Jamin},
+  booktitle = {International Conference on Machine Learning (ICML)},
+  year      = {2026},
+  note      = {arXiv:2602.01576}
 }
 ```
 

@@ -1,0 +1,55 @@
+cff-version: 1.2.0
+message: "If you use gWorld or MWMBench, please cite the paper below."
+title: "gWorld: Mobile GUI World Model via Renderable Code Generation"
+abstract: "gWorld (GuiWorld) is an open-weight GUI world model for mobile GUI agents: a single vision-language model (8B / 32B) that predicts the next screen after a user action by generating renderable HTML/web code instead of pixels."
+authors:
+  - family-names: Koh
+    given-names: Woosung
+    affiliation: "Trillion Labs; KAIST AI"
+  - family-names: Han
+    given-names: Sungjun
+    affiliation: "Trillion Labs"
+  - family-names: Lee
+    given-names: Segyu
+    affiliation: "Trillion Labs; KAIST AI"
+  - family-names: Yun
+    given-names: Se-Young
+    affiliation: "KAIST AI"
+  - family-names: Shin
+    given-names: Jamin
+    affiliation: "Trillion Labs"
+repository-code: "https://github.com/trillion-labs/gWorld"
+url: "https://trillionlabs-gworld.github.io/"
+license: Apache-2.0
+date-released: 2026-02-02
+keywords:
+  - GUI world model
+  - mobile GUI agent
+  - world model
+  - next screen prediction
+  - renderable code generation
+  - vision-language model
+  - MWMBench
+preferred-citation:
+  type: conference-paper
+  title: "Generative Visual Code Mobile World Models"
+  authors:
+    - family-names: Koh
+      given-names: Woosung
+    - family-names: Han
+      given-names: Sungjun
+    - family-names: Lee
+      given-names: Segyu
+    - family-names: Yun
+      given-names: Se-Young
+    - family-names: Shin
+      given-names: Jamin
+  collection-title: "International Conference on Machine Learning (ICML)"
+  conference:
+    name: "International Conference on Machine Learning (ICML)"
+  year: 2026
+  identifiers:
+    - type: other
+      value: "arXiv:2602.01576"
+      description: "arXiv preprint"
+  url: "https://arxiv.org/abs/2602.01576"
